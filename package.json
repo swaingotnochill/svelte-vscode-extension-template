@@ -1,0 +1,80 @@
+{
+  "name": "todo",
+  "displayName": "todo",
+  "description": "To-Do list.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:todo.helloWorld",
+    "onCommand:todo.askQuestion",
+    "onCommand:todo.refresh",
+    "onCommand:todo.move2kube"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "todo.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "todo.askQuestion",
+        "category": "todo",
+        "title": "Ask Question."
+      },
+      {
+        "command": "todo.refresh",
+        "category": "todo",
+        "title": "Refresh WebView."
+      },
+      {
+        "command": "todo.move2kube",
+        "category": "todo",
+        "title": "Move2kube"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack --config ./build/node-extension.webpack.config.js",
+    "watch": "concurrently \"rollup -c -w --bundleConfigAsCjs\" \"webpack --watch \"",
+    "package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run test-compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vscode/test-electron": "^2.2.2",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "rollup": "^3.18.0",
+    "rollup-plugin-svelte": "^7.1.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.55.1",
+    "svelte-check": "^3.0.4",
+    "svelte-preprocess": "^5.0.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
